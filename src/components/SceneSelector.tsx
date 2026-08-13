@@ -10,8 +10,8 @@ export default function SceneSelector() {
   return (
     <div className="mt-16 border-y border-white/10 py-8 lg:mt-24">
       <div className="mb-6 flex items-end justify-between gap-4">
-        <div><p className="section-kicker">SIGNAL ARCHIVE</p><h3 className="mt-2 text-2xl font-medium tracking-[-.04em] sm:text-3xl">CHOOSE A SIGNAL</h3></div>
-        <span className="hidden text-[10px] tracking-[.22em] text-muted sm:block">03 // ACTIVE SCENES</span>
+        <div><p className="section-kicker">OXMEW FILES</p><h3 className="mt-2 text-2xl font-medium tracking-[-.04em] sm:text-3xl">FOLLOW HIS STORY</h3></div>
+        <span className="hidden text-[10px] tracking-[.22em] text-muted sm:block">03 // OPEN CHAPTERS</span>
       </div>
       <div className="grid gap-5 lg:grid-cols-[.72fr_1.28fr] lg:items-stretch">
         <div className="flex flex-col gap-2" role="tablist" aria-label="Oxmew scenes">

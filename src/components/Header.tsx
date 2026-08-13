@@ -18,7 +18,7 @@ export default function Header() {
       <div className="nav-shell mx-auto flex h-16 max-w-[1500px] items-center justify-between border border-white/10 bg-[#090a0e]/75 px-4 shadow-2xl shadow-black/30 backdrop-blur-xl sm:px-5">
         <OxmewLogo />
         <nav className="absolute left-1/2 hidden -translate-x-1/2 gap-10 md:flex" aria-label="Primary navigation">
-          <a className="nav-link" href="#about">About</a><a className="nav-link" href="#tokenomics">Tokenomics</a>
+          <a className="nav-link" href="#about">Story</a><a className="nav-link" href="#impact">Impact</a>
         </nav>
         <div className="hidden md:block"><SocialIcons /></div>
         <button type="button" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} aria-expanded={isMobileMenuOpen} aria-label={isMobileMenuOpen ? 'Close navigation' : 'Open navigation'}
