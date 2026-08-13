@@ -34,8 +34,7 @@ export const siteConfig = {
     },
   ],
   socials: {
-    pump: 'https://pump.fun',
-    x: 'https://x.com',
-    telegram: 'https://t.me',
+    x: 'https://x.com/OxmewSol',
+    telegram: 'https://t.me/OxmewSolana',
   },
 } as const

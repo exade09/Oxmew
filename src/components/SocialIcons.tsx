@@ -1,6 +1,8 @@
 import { siteConfig } from '../config'
+import { useState } from 'react'
+import SoonOverlay from './SoonOverlay'
 
-type Platform = keyof typeof siteConfig.socials
+type Platform = 'pump' | keyof typeof siteConfig.socials
 
 const PumpIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 17V7h8.4a4 4 0 0 1 0 8H9v2H5Zm4-6h4.1a1 1 0 0 0 0-2H9v2Z" fill="currentColor"/><path d="m16 16 3-3 2 2-3 3Z" fill="#8BFF5A"/></svg>
@@ -17,18 +19,35 @@ const labels = { pump: 'Pump.fun', x: 'X', telegram: 'Telegram' }
 const glows = { pump: 'hover:text-green hover:shadow-[0_0_24px_rgba(139,255,90,.22)]', x: 'hover:text-pink hover:shadow-[0_0_24px_rgba(255,42,163,.22)]', telegram: 'hover:text-cyan hover:shadow-[0_0_24px_rgba(25,199,255,.22)]' }
 
 export default function SocialIcons({ mobile = false, onNavigate }: { mobile?: boolean; onNavigate?: () => void }) {
+  const [isSoonOpen, setIsSoonOpen] = useState(false)
+
   return (
-    <div className={`flex ${mobile ? 'gap-4' : 'gap-2'}`}>
+    <>
+      <div className={`flex ${mobile ? 'gap-4' : 'gap-2'}`}>
       {(Object.keys(icons) as Platform[]).map((platform) => {
         const Icon = icons[platform]
+        const sharedClassName = `social-frame reflection relative grid ${mobile ? 'h-12 w-12' : 'h-9 w-9'} place-items-center overflow-hidden border border-white/10 bg-white/[.04] text-white transition duration-300 hover:-translate-y-0.5 hover:rotate-3 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan ${glows[platform]}`
+
+        if (platform === 'pump') {
+          return (
+            <button key={platform} type="button" onClick={() => setIsSoonOpen(true)}
+              aria-label="Open Pump.fun launch notice" title="Pump.fun" data-tooltip="Pump.fun"
+              className={sharedClassName}>
+              <Icon />
+            </button>
+          )
+        }
+
         return (
           <a key={platform} href={siteConfig.socials[platform]} target="_blank" rel="noopener noreferrer" onClick={onNavigate}
             aria-label={`Open ${labels[platform]}`} title={labels[platform]} data-tooltip={labels[platform]}
-            className={`social-frame reflection relative grid ${mobile ? 'h-12 w-12' : 'h-9 w-9'} place-items-center overflow-hidden border border-white/10 bg-white/[.04] text-white transition duration-300 hover:-translate-y-0.5 hover:rotate-3 hover:scale-105 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan ${glows[platform]}`}>
+            className={sharedClassName}>
             <Icon />
           </a>
         )
       })}
-    </div>
+      </div>
+      <SoonOverlay open={isSoonOpen} onClose={() => setIsSoonOpen(false)} />
+    </>
   )
 }
